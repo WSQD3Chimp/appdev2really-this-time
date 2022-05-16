@@ -7,10 +7,22 @@
     tools:context=".LibrarianActivity">
 
     <Button
+        android:id="@+id/button9"
+        android:layout_width="301dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/teal_700"
+        android:shadowColor="#03A9F4"
+        android:text="View all books"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
+
+    <Button
         android:id="@+id/button12"
         android:layout_width="301dp"
         android:layout_height="77dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@color/teal_700"
         android:shadowColor="#03A9F4"
         android:text="View the borrowed books"

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".UpdateBook"
+            android:exported="false" />
+        <activity
+            android:name=".BooksViewLibrarian"
+            android:exported="false" />
+        <activity
             android:name=".AddBooks"
             android:exported="false" />
         <activity

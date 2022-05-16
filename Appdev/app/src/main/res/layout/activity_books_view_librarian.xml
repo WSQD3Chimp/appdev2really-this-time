@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BooksView">
+    tools:context=".BooksViewLibrarian">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContacts"
-        android:layout_width="417dp"
-        android:layout_height="654dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/recycler_view_lib"
+        android:layout_width="412dp"
+        android:layout_height="652dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button14"
-        android:layout_width="410dp"
+        android:id="@+id/button15"
+        android:layout_width="416dp"
         android:layout_height="62dp"
         android:text="Back"
-        app:layout_constraintBottom_toTopOf="@+id/rvContacts"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_lib"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

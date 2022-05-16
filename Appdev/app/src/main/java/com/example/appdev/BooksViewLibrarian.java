@@ -2,16 +2,20 @@ package com.example.appdev;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,13 +23,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BooksView extends AppCompatActivity {
+public class BooksViewLibrarian extends AppCompatActivity {
+    /*RecyclerView rv;
+    BooksViewAdapterLibrarian BVAL;
+    SwipeRefreshLayout swipeRefreshLayout;
+    DAOBook doa;
+    private ArrayList<Book> bookList = new ArrayList<>();*/
 
-    RecyclerView rv;
-    BooksViewAdapter BVA;
-    DatabaseReference ref;
     Button back;
+    RecyclerView rv;
+    BooksViewAdapterLibrarian BVAL;
+    DatabaseReference ref;
     ArrayList<Book> bookList;
     SwipeRefreshLayout swipeRefreshLayout;
     DAOBook doa;
@@ -33,33 +43,25 @@ public class BooksView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_books_view);
+        setContentView(R.layout.activity_books_view_librarian);
 
-        rv = findViewById(R.id.rvContacts);
-        ref = FirebaseDatabase.getInstance().getReference("Users");
+        rv = findViewById(R.id.recycler_view_lib);
+        ref = FirebaseDatabase.getInstance().getReference("Books");
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         bookList = new ArrayList<>();
-        BVA = new BooksViewAdapter(bookList, this);
-        rv.setAdapter(BVA);
+        BVAL = new BooksViewAdapterLibrarian(bookList, this);
+        rv.setAdapter(BVAL);
 
-        back = findViewById(R.id.button14);
+        back = findViewById(R.id.button15);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ClientActivity.class));
+                startActivity(new Intent(getApplicationContext(),LibrarianActivity.class));
             }
         });
 
-        /*rv = findViewById(R.id.rvContacts);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        rv.setLayoutManager(manager);
-        BVA = new BooksViewAdapter(this);
-        rv.setAdapter(BVA);
-        ref = FirebaseDatabase.getInstance().getReference("Books");
-        doa = new DAOBook();
-        loadData();*/
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,7 +69,7 @@ public class BooksView extends AppCompatActivity {
                     Book book = dataSnapshot.getValue(Book.class);
                     bookList.add(book);
                 }
-                BVA.notifyDataSetChanged();
+                BVAL.notifyDataSetChanged();
             }
 
             @Override
@@ -87,8 +89,8 @@ public class BooksView extends AppCompatActivity {
                     Book book = data.getValue(Book.class);
                     books.add(book);
                 }
-                BVA.setBooks(books);
-                BVA.notifyDataSetChanged();
+                BVAL.setBooks(books);
+                BVAL.notifyDataSetChanged();
             }
 
             @Override

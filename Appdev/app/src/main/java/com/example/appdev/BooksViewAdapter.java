@@ -18,8 +18,13 @@ public class BooksViewAdapter extends RecyclerView.Adapter<BooksViewAdapter.View
     Context mContext;
     LayoutInflater minflator;
 
+    public BooksViewAdapter(ArrayList<Book> books, Context mContext) {
+        Books = books;
+        this.mContext = mContext;
+    }
+
     public void setBooks(ArrayList<Book> books) {
-        books.addAll(books);
+        this.Books.addAll(books);
     }
 
     public BooksViewAdapter(Context mContext) {

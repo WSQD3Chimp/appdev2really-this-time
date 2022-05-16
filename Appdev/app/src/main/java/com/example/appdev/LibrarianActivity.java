@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LibrarianActivity extends AppCompatActivity {
 
-    Button AddBook, viewBorBookBut, viewclientDB;
+    Button AddBook, viewBorBookBut, viewclientDB, allBooks, logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,14 @@ public class LibrarianActivity extends AppCompatActivity {
         AddBook = findViewById(R.id.button10);
         viewclientDB = findViewById(R.id.button11);
         viewBorBookBut = findViewById(R.id.button12);
+        allBooks = findViewById(R.id.button9);
+        logout = findViewById(R.id.button8);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
 
         AddBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +39,12 @@ public class LibrarianActivity extends AppCompatActivity {
 //                startActivity(new Intent(getApplicationContext(), ClientsView.class));
 //            }
 //        });
+        allBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BooksViewLibrarian.class));
+            }
+        });
 
     }
 }
